@@ -2,9 +2,9 @@
 URLs for greeting_api.
 """
 from django.urls import re_path  # pylint: disable=unused-import
-from django.views.generic import TemplateView  # pylint: disable=unused-import
+from greeting_api import views# pylint: disable=unused-import
 
 urlpatterns = [
     # TODO: Fill in URL patterns and views here.
-    # re_path(r'', TemplateView.as_view(template_name="greeting_api/base.html")),
+    re_path(r'greeting/', views.GreetingView.as_view()),
 ]
