@@ -9,15 +9,15 @@ class GreetingView(APIView):
         serializer = GreetingSerializer(data=request.data)
         username = request.user.username
         if serializer.is_valid():
-            message = serializer.data["text"]
+            message = serializer.data["message"]
 
-            if message == "hello":
+            if message.lower() == "hello":
                 message = "goodbye"
-                request.data["text"] = message
+                request.data["message"] = message
                 self.post(request)
                 return Response({"user": username, "text": message})
 
-        message = request.data["text"]
+        message = serializer.data["message"]
         return Response({"user": username, "text": message})
 
     def get(self, request):
