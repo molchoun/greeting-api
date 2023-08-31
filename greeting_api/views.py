@@ -13,6 +13,7 @@ class GreetingView(APIView):
 
             if message.lower() == "hello":
                 message = "goodbye"
+                request.data._mutable = True
                 request.data["message"] = message
                 self.post(request)
                 return Response({"user": username, "text": message})
