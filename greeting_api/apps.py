@@ -11,3 +11,17 @@ class GreetingApiConfig(AppConfig):
     """
 
     name = 'greeting_api'
+
+    plugin_app = {
+        'url_config': {
+            'lms.djangoapp': {
+                'namespace': 'greeting_api',
+                'relative_path': 'urls',
+            }
+        },
+        'settings_config': {
+            'lms.djangoapp': {
+                'common': {'relative_path': 'settings'},
+            }
+        },
+    }

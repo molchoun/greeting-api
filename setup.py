@@ -157,4 +157,10 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8',
     ],
+    entry_points={
+            "lms.djangoapp": [
+                "greeting_api = greeting_api.apps:GreetingApiConfig",
+            ],
+        }
+
 )
