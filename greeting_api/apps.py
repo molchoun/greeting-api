@@ -3,6 +3,8 @@ greeting_api Django application initialization.
 """
 
 from django.apps import AppConfig
+from edx_django_utils.plugins import PluginURLs, PluginSettings
+from openedx.core.djangoapps.plugins.constants import ProjectType, SettingsType
 
 
 class GreetingApiConfig(AppConfig):
@@ -13,15 +15,15 @@ class GreetingApiConfig(AppConfig):
     name = 'greeting_api'
 
     plugin_app = {
-        'url_config': {
-            'lms.djangoapp': {
-                'namespace': 'greeting_api',
-                'relative_path': 'urls',
+        PluginURLs.CONFIG: {
+            ProjectType.LMS: {
+                PluginURLs.NAMESPACE: 'greeting_api',
+                PluginURLs.RELATIVE_PATH: 'urls',
             }
         },
-        'settings_config': {
-            'lms.djangoapp': {
-                'common': {'relative_path': 'settings'},
+        PluginSettings.CONFIG: {
+            ProjectType.LMS: {
+                SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: 'settings.common'},,
             }
         },
     }
