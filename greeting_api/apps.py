@@ -23,7 +23,7 @@ class GreetingApiConfig(AppConfig):
         },
         PluginSettings.CONFIG: {
             ProjectType.LMS: {
-                SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: 'settings.common'},,
+                SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: 'settings.common'},
             }
         },
     }
