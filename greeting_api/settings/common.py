@@ -2,4 +2,4 @@
 
 
 def plugin_settings(settings):
-    pass
+    settings.FEATURES['ENABLE_GREETING_API'] = True
