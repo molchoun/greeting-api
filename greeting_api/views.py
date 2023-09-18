@@ -13,9 +13,6 @@ logger = logging.getLogger(__name__)
 
 
 class GreetingView(APIView):
-    authentication_classes = (
-        BearerAuthenticationAllowInactiveUser,
-    )
     def post(self, request):
         logger.info(f"Start post")
         serializer = GreetingSerializer(data=request.data)
