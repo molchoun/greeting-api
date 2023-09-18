@@ -16,10 +16,11 @@ class GreetingView(APIView):
     authentication_classes = (
         BearerAuthenticationAllowInactiveUser,
     )
-    permission_classes = (IsAuthenticated, IsAuthenticatedOrReadOnly)
+    permission_classes = (IsAuthenticated, )
     def post(self, request):
-
+        logger.info(f"Start post")
         serializer = GreetingSerializer(data=request.data)
+        logger.info(f"After serializer")
         if serializer.is_valid():
             message = serializer.data["message"]
             logger.info(f"Message from user: {message}")
