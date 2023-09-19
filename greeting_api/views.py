@@ -33,6 +33,7 @@ class GreetingView(APIView):
                 request.data._mutable = True
                 request.data["message"] = message
                 self.post(request)
+                return Response({"Message from user": message})
 
         message = serializer.data["message"]
         return Response({"Message from user": message})
