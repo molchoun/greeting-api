@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from greeting_api.serializers import GreetingSerializer
 from django.contrib.auth import get_user_model
+from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthentication
 from edx_rest_framework_extensions.auth.session.authentication import SessionAuthenticationAllowInactiveUser
 from openedx.core.lib.api.authentication import BearerAuthenticationAllowInactiveUser
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
@@ -15,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 class GreetingView(APIView):
     authentication_classes = (
+        JwtAuthentication,
         BearerAuthenticationAllowInactiveUser,
         SessionAuthenticationAllowInactiveUser,
     )
