@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthentication
 from edx_rest_framework_extensions.auth.session.authentication import SessionAuthenticationAllowInactiveUser
 from openedx.core.lib.api.authentication import BearerAuthenticationAllowInactiveUser
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 from greeting_api.models import Greeting
 
 
@@ -20,7 +20,7 @@ class GreetingView(APIView):
         BearerAuthenticationAllowInactiveUser,
         SessionAuthenticationAllowInactiveUser,
     )
-    permission_classes = (IsAuthenticated, IsAuthenticatedOrReadOnly)
+    permission_classes = (IsAuthenticated, )
     def post(self, request):
 
         serializer = GreetingSerializer(data=request.data)
@@ -37,6 +37,3 @@ class GreetingView(APIView):
 
         message = serializer.data["message"]
         return Response({"Message from user": message})
-
-    def get(self, request):
-        return Response({"message": "Hello!"})
